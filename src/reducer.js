@@ -63,5 +63,6 @@ export function combineReducers (tree) {
     .scan((lastState, currentState) => ({
       ...lastState,
       ...currentState
-    }), {});
+    }), {})
+    .skip(stores.length - 1)
 }
