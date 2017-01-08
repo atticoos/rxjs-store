@@ -1,8 +1,12 @@
 {
   "name": "rxjs-store",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
   "scripts": {
     "build": "babel -d lib/ src/",
     "clean": "rimraf lib",
