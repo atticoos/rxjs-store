@@ -2,6 +2,8 @@
 
 An RxJS Store Container implementation.
 
+Used well with [rxjs-react-store](https://github.com/ajwhite/rxjs-react-store).
+
 ## How it works
 
 The library produces two things:
