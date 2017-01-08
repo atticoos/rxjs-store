@@ -20,7 +20,7 @@ describe('combineReducers', () => {
     wordStore = createReducer(WordActions, '');
   });
 
-  it('should create a store contianing the spcified nodes', () => {
+  it('creates a store contianing the spcified nodes', () => {
     const store = combineReducers({
       count: countStore.store,
       word: wordStore.store
@@ -32,7 +32,7 @@ describe('combineReducers', () => {
     });
   });
 
-  it('should update the store when actions are called', () => {
+  it('updates the store when actions are called', () => {
     const store = combineReducers({
       count: countStore.store,
       word: wordStore.store
