@@ -2,6 +2,20 @@ import {Observable, Subject} from 'rx/dist/rx.all';
 
 /**
  * Creates an Rx Store Reducer.
+ *
+ * Usage:
+ *   const Actions = {
+ *     increment: () => count => count + 1,
+ *     decrement: () => count => count - 1
+ *   };
+ *
+ *   const {store, actions} = createReducer(Actions, 0);
+ *
+ *   store.subscribe(count => console.log('Count:', count));
+ *
+ *   actions.increment() // Count: 1
+ *   actions.increment() // Count: 2
+ *   actions.decrement() // Count: 1
  */
 export function createReducer (reducerActions, initialState) {
   var subjects = Object.keys(reducerActions).reduce((map, actionName) => {
