@@ -2,6 +2,38 @@
 
 An RxJS Store Container implementation.
 
+## How it works
+
+The library produces two things:
+- A set of actions
+- An observable store
+
+### Actions
+An action is defined as an object that has a set of functions. Each function accepts the input as an argument, and returns a function that will accept the last state as an argument. That last function will return the next state.
+
+```js
+const Action = {
+  methodName: input => lastState => { /* business logic */ },
+
+  // example as a "counter":
+  increment: (amount = 1) => count => count + 1,
+  decrement: (amount = 1) => count => count - amount
+};
+```
+
+This will become provided to a method the library defines called `createReducer`.
+
+```js
+const {store, actions} = createReducer(Action, initialState);
+```
+
+The `store` is an `Rx.Observable` and will produce values that become transitioned by our actions.
+
+When an `action` is called, the input will be passed to the first argument in our action's function. Then, internally, the last state will be passed to the second function our action's function returned. Then finally the action will return the next state.
+
+This next state, if changed, becomes sent through the store to the subscribers.
+
+
 ## Example Usage
 
 ### Single Store
