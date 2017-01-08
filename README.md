@@ -16,12 +16,25 @@ An action is defined as an object that has a set of functions. Each function acc
 ```js
 const Action = {
   methodName: input => lastState => { /* business logic */ },
+}
+```
 
-  // example as a "counter":
+In the case of a Counter state, we might have:
+```js
+const Counter = {
   increment: (amount = 1) => count => count + 1,
   decrement: (amount = 1) => count => count - amount
 };
 ```
+
+In the case of a Todo List, we might have:
+```js
+const TodoList = {
+  addTodo: newTodo => todos => todos.concat(newTodo),
+  removeTodo: oldTodo => todos => todos.filter(todo => todo !== oldTodo)
+};
+```
+
 
 This will become provided to a method the library defines called `createReducer`.
 
@@ -75,7 +88,6 @@ const WordActions = {
 };
 
 const counter = createReducer(CounterActions, 0);
-const word = createReducer(WordActions, '');
 
 const store = combineReducers({
   count: counter.store,
