@@ -65,10 +65,10 @@ const {store, actions} = createReducer(CounterActions, 0);
 
 store.subscribe(count => console.log('Count:', count));
 
-store.increment(); // Count: 1
-store.increment(); // Count: 2
-store.decrement(); // Count: 3
-store.decrement(); // Count: 4
+actions.increment(); // Count: 1
+actions.increment(); // Count: 2
+actions.decrement(); // Count: 1
+actions.decrement(); // Count: 0
 ```
 
 
@@ -88,6 +88,7 @@ const WordActions = {
 };
 
 const counter = createReducer(CounterActions, 0);
+const word = createReducer(WordActions, '');
 
 const store = combineReducers({
   count: counter.store,
